@@ -1,0 +1,73 @@
+from app.models.models import User, Movie, Reaction, Watchlist, Interaction
+from sqlmodel import Session
+from app.vector_db.database import engine
+
+def create_user():
+    user_1 = User(full_name="shiva chaudhary", email="shivachaudhari416@gmail.com")
+    user_2 = User(full_name="umanga ghimire", email="umangaghimire@gmail.com")
+    user_3 = User(full_name="chandu sharma", email="chandansha168@gmail.com") 
+
+    session = Session(engine)
+
+    session.add(user_1)
+    session.add(user_2)
+    session.add(user_3)
+
+    session.commit()
+
+def create_movie():
+    movie_1 = Movie(title="Christopher Nolan's 'The Odyssey'", content_type="movie", genre="adventure, mythology, action, history, and fantasy", description="After the Trojan War, Odysseus faces a dangerous voyage back to Ithaca, meeting creatures like the Cyclops Polyphemus, Sirens, and Circe along the way.", release_year=2026, imdb_rating=7.8, duration_minutes=160)
+    movie_2 = Movie(title="Peaky Blinders", content_type="tv_series", genre="crime, drama, historical", description="A gangster family epic set in 1900s England, centering on a gang who sew razor blades in the peaks of their caps, and their fierce boss Tommy Shelby.", release_year=2013, imdb_rating=8.7, duration_minutes=60)
+    movie_3 = Movie(title="Bridgerton", content_type="tv_series", genre="drama, romance, period", description="The eight close-knit siblings of the Bridgerton family look for love and happiness in London high society during the Regency era.", release_year=2020, imdb_rating=7.3, duration_minutes=60)
+    movie_4 = Movie(title="Avengers: Endgame", content_type="movie", genre="action, superhero, sci-fi, adventure, dark comedy", description="After the devastating events of Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos' actions and restore balance to the universe.", release_year=2019, imdb_rating=8.4, duration_minutes=181)
+    movie_5 = Movie(title="Avengers: Infinity War", content_type="movie", genre="action, adventure, sci-fi", description="The Avengers and their allies must be willing to sacrifice all in an attempt to defeat the powerful Thanos before his blitz of devastation and ruin puts an end to the universe.", release_year=2026, imdb_rating=0, duration_minutes=180)
+    movie_6 = Movie(title="Fallout", content_type="tv_series", genre="action, drama, sci-fi", description="In a future, post-apocalyptic Los Angeles brought about by nuclear decimation, citizens must live in underground bunkers to protect themselves from radiation, mutants and bandits.", release_year=2024, imdb_rating=8.4, duration_minutes=60)
+    movie_7 = Movie(title="Avatar: Fire and Ash", content_type="movie", genre="action, adventure, fantasy, sci-fi", description="Jake and Neytiri's family grapples with grief, encountering a new, aggressive Na'vi tribe, the Ash People, who are led by the ruthless Varang.", release_year=2025, imdb_rating=7.4, duration_minutes=195)    
+    movie_8 = Movie(title="Dhurandhar", content_type="movie", genre="action, drama, thriller", description="A mysterious traveler slips into the heart of Karachi's underbelly and rises through its ranks with lethal precision, only to tear the notorious ISI-Underworld nexus apart from within.", release_year=2025, imdb_rating=7.2, duration_minutes=150)    
+    movie_9 = Movie(title="The Last of Us", content_type="tv_series", genre="action, adventure, drama, horror, sci-fi", description="After a global pandemic destroys civilization, a hardened survivor takes charge of a 14-year-old girl who may be humanity's last hope.", release_year=2023, imdb_rating=8.7, duration_minutes=55)
+    movie_10 = Movie(title="Stranger Things", content_type="tv_series", genre="drama, fantasy, horror, mystery, sci-fi, thriller", description="When a young boy disappears, his mother, a police chief and his friends must confront terrifying supernatural forces in order to get him back.", release_year=2016, imdb_rating=8.7, duration_minutes=50)
+    movie_11 = Movie(title="Ek Deewane ki Deewaniyat", content_type="movie", genre="romance, drama", description="When a powerful politician falls for a strong-willed superstar, their passionate romance quickly spirals into a dangerous game of obsession, pride, and heartbreak.", release_year=2025, imdb_rating=7.0, duration_minutes=140)
+    movie_12 = Movie(title="Baahubali 2: The Conclusion", content_type="movie", genre="action, adventure, drama", description="When Shiva, the son of Bahubali, learns about his heritage, he begins to look for answers. His story is juxtaposed with past events that unfolded in the Mahishmati Kingdom.", release_year=2017, imdb_rating=8.2, duration_minutes=167)
+    movie_13 = Movie(title="Mission Impossible: The Final Reckoning", content_type="movie", genre="action, adventure, thriller", description="Hunt and the IMF pursue a dangerous AI called the Entity that's infiltrated global intelligence. With governments and a figure from his past in pursuit, Hunt races to stop it from forever changing the world.", release_year=2025, imdb_rating=7.2, duration_minutes=170)
+    movie_14 = Movie(title="Kill", content_type="movie", genre="action, thriller, one man army action, drama", description="During a train trip to New Delhi, a pair of commandos face an army of invading bandits.", release_year=2024, imdb_rating=7.8, duration_minutes=105)
+    movie_15 = Movie(title="F1", content_type="movie", genre="action, drama, motor sport, car action", description="A Formula One driver comes out of retirement to mentor a younger driver, while battling his own past demons.", release_year=2025, imdb_rating=7.8, duration_minutes=150)
+    movie_16 = Movie(title="Kantara - A Legend : Chapter 1", content_type="movies", genre="action, drama, thriller, period drama", description="Exploring the origins of Kaadubettu Shiva during the Kadamba dynasty era, it delves into the untamed wilderness and forgotten lore surrounding his past.", release_year=2025, imdb_rating=8.0, duration_minutes=155)
+    movie_17 = Movie(title="Monster", content_type="movies", genre="drama, thriller", description="A gripping psychological thriller exploring the darker side of human nature.", release_year=2025, imdb_rating=7.5, duration_minutes=130)
+    movie_18 = Movie(title="Dept Q", content_type="movies", genre="crime, mystery, thriller", description="Carl, a former top-rated detective, is wracked with guilt following an attack that left his partner paralyzed and another policeman dead. On his return to work, Carl is assigned to a cold case that will consume his life.", release_year=2024, imdb_rating=7.3, duration_minutes=125)
+    movie_19 = Movie(title="Maalik", content_type="movies", genre="action, drama, thriller, politics, gangster", description="A gangster with political ambitions rises to power through the criminal underworld.", release_year=2025, imdb_rating=7.4, duration_minutes=145)
+    movie_20 = Movie(title="Chhaava", content_type="movies", genre="action, biography, drama, history, period", description="After the death of his father, warrior-king Sambhaji Maharaj battles Mughal forces led by Aurangzeb to keep the Maratha Empire alive.", release_year=2024, imdb_rating=8.0, duration_minutes=170) 
+    movie_21 = Movie(title="Aap Jaisa Koi", content_type="movies", genre="comedy, drama, romance", description="Lives of two unique individuals, Shrirenu Tripathi and Madhu Bose. Embark on a journey full of unexpected twists, heartfelt moments and plenty of fun.", release_year=2025, imdb_rating=7.1, duration_minutes=135)
+    movie_22 = Movie(title="Inspector Zende", content_type="movies", genre="crime, drama, thriller", description="After escaping prison, serial killer Carl Bhojraj returns to Mumbai, where Inspector Zende pursues him to capture the elusive criminal again.", release_year=2025, imdb_rating=7.2, duration_minutes=140)
+    movie_23 = Movie(title="Thalaivan Thalaivii", content_type="movies", genre="action, drama", description="Two headstrong lovers navigate a turbulent relationship where passion and conflict intertwine, creating an intense emotional bond through their shared journey.", release_year=2025, imdb_rating=7.0, duration_minutes=145)
+    movie_24 = Movie(title="The Girlfriend", content_type="movies", genre="romance, thriller", description="A young woman explores love, compatibility and self-discovery during college, experiencing relationship complexities and personal growth.", release_year=2025, imdb_rating=6.9, duration_minutes=120)
+    movie_25 = Movie(title="Final Destination: Bloodlines", content_type="movies", genre="horror, thriller", description="Plagued by a recurring violent nightmare, a college student returns home to find the one person who can break the cycle and save her family from the horrific fate that inevitably awaits them.", release_year=2025, imdb_rating=6.8, duration_minutes=95)
+
+    session = Session(engine)
+    
+    session.add(movie_1)
+    session.add(movie_2)
+    session.add(movie_3)
+    session.add(movie_4)
+    session.add(movie_5)
+    session.add(movie_6)
+    session.add(movie_7)
+    session.add(movie_8)
+    session.add(movie_9)
+    session.add(movie_10)
+    session.add(movie_11)
+    session.add(movie_12)
+    session.add(movie_13)
+    session.add(movie_14)
+    session.add(movie_15)
+    session.add(movie_16)
+    session.add(movie_17)
+    session.add(movie_18)
+    session.add(movie_19)
+    session.add(movie_20)
+    session.add(movie_21)
+    session.add(movie_22)
+    session.add(movie_23)
+    session.add(movie_24)
+    session.add(movie_25)
+
+    session.commit()
